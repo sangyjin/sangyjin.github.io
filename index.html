@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIST 컴퓨터공학과 4학년 백엔드/AI 엔지니어 지원자 이서윤의 온라인 이력서">
+  <meta name="theme-color" content="#0a66c2">
+  <title>이서윤 | GIST Computer Science Resume</title>
+  <style>
+    :root {
+      --bg: #f3f2ef;
+      --surface: #ffffff;
+      --surface-soft: #eef3f8;
+      --line: #d6d9dc;
+      --text: #191919;
+      --muted: #666666;
+      --subtle: #8c8c8c;
+      --blue: #0a66c2;
+      --blue-dark: #004182;
+      --green: #057642;
+      --gold: #b7791f;
+      --coral: #b24020;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      line-height: 1.55;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a.button {
+      min-height: 40px;
+      border-radius: 999px;
+      border: 1px solid var(--blue);
+      background: var(--surface);
+      color: var(--blue);
+      font: inherit;
+      font-weight: 700;
+      padding: 8px 18px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    a.button.primary {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    a.button:hover,
+    button:hover {
+      border-color: var(--blue-dark);
+      color: var(--blue-dark);
+      background: #eaf4ff;
+    }
+
+    a.button.primary:hover {
+      background: var(--blue-dark);
+      color: #fff;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .topbar-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      min-height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 0 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      color: var(--blue);
+      flex: 0 0 auto;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 4px;
+      background: var(--blue);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 19px;
+      font-weight: 900;
+    }
+
+    .search {
+      flex: 1;
+      max-width: 360px;
+      min-width: 180px;
+      height: 38px;
+      border-radius: 4px;
+      background: var(--surface-soft);
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 12px;
+      font-size: 14px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .nav a {
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+
+    .nav a:hover {
+      background: var(--surface-soft);
+      color: var(--text);
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 24px auto 48px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 22px;
+      padding: 0 20px;
+    }
+
+    .stack {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .profile-cover {
+      min-height: 190px;
+      background:
+        linear-gradient(110deg, rgba(10, 102, 194, 0.9), rgba(16, 50, 85, 0.52)),
+        url("https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1600&q=80") center 43% / cover;
+      position: relative;
+    }
+
+    .profile-cover::after {
+      content: "";
+      position: absolute;
+      inset: auto 28px 22px auto;
+      width: min(340px, 42vw);
+      height: 72px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(8px);
+    }
+
+    .profile-body {
+      padding: 0 28px 28px;
+    }
+
+    .avatar-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: -74px;
+    }
+
+    .avatar {
+      width: 148px;
+      height: 148px;
+      border-radius: 50%;
+      border: 5px solid var(--surface);
+      background:
+        radial-gradient(circle at 35% 28%, #f8fafc 0 14%, transparent 15%),
+        linear-gradient(145deg, #0a66c2, #6ea8d8 48%, #f3c969);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 40px;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+      flex: 0 0 auto;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+      padding-bottom: 8px;
+    }
+
+    .identity {
+      margin-top: 18px;
+      display: grid;
+      gap: 8px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(30px, 4vw, 42px);
+      line-height: 1.14;
+      letter-spacing: 0;
+    }
+
+    .headline {
+      font-size: 18px;
+      color: #333;
+      max-width: 780px;
+    }
+
+    .meta {
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+      font-size: 14px;
+    }
+
+    .meta strong {
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    .open-to-work {
+      margin-top: 16px;
+      border: 1px solid #b7d6f4;
+      background: #f4f9ff;
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      display: grid;
+      gap: 4px;
+    }
+
+    .open-to-work b {
+      color: var(--blue-dark);
+    }
+
+    .section {
+      padding: 24px 28px;
+    }
+
+    .section + .section {
+      border-top: 1px solid var(--line);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-size: 22px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      font-size: 17px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    .section-note {
+      color: var(--muted);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .about {
+      color: #333;
+      max-width: 860px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 22px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr);
+      gap: 14px;
+    }
+
+    .logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: var(--surface-soft);
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      font-weight: 900;
+    }
+
+    .item-meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
+    .bullets {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: #333;
+    }
+
+    .bullets li + li {
+      margin-top: 6px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .chip {
+      border-radius: 999px;
+      background: #edf3f8;
+      color: #2f5f7f;
+      border: 1px solid #d5e4ef;
+      padding: 5px 10px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .project-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .project {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+      min-height: 228px;
+    }
+
+    .project-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .status {
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 12px;
+      font-weight: 800;
+      background: #f8f0df;
+      color: var(--gold);
+      flex: 0 0 auto;
+    }
+
+    .status.live {
+      background: #e6f3ed;
+      color: var(--green);
+    }
+
+    .project p {
+      color: #333;
+      font-size: 14px;
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .skill-box {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: #fff;
+    }
+
+    .skill-box h3 {
+      margin-bottom: 12px;
+    }
+
+    .skill-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 90px;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    .skill-row + .skill-row {
+      margin-top: 10px;
+    }
+
+    .bar {
+      height: 7px;
+      border-radius: 999px;
+      background: #e4e6eb;
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--blue), #36a3d9);
+    }
+
+    .certs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .cert {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px;
+      background: #fff;
+    }
+
+    .cert span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .side-card {
+      padding: 18px;
+    }
+
+    .side-card h2 {
+      font-size: 18px;
+      margin-bottom: 14px;
+    }
+
+    .profile-mini {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-cover {
+      height: 86px;
+      border-radius: 6px;
+      background:
+        linear-gradient(135deg, rgba(10, 102, 194, 0.86), rgba(33, 96, 109, 0.4)),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80") center / cover;
+    }
+
+    .mini-name {
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    .contact-list,
+    .quick-list {
+      display: grid;
+      gap: 11px;
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr);
+      gap: 10px;
+      align-items: start;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--surface-soft);
+      color: var(--blue);
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .quick-list a,
+    .quick-list div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      color: #333;
+      font-size: 14px;
+    }
+
+    .quick-list a:first-child,
+    .quick-list div:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .metric {
+      border-radius: var(--radius);
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      padding: 12px;
+    }
+
+    .metric b {
+      display: block;
+      color: var(--blue-dark);
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer {
+      max-width: 1180px;
+      margin: -24px auto 40px;
+      padding: 0 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 960px) {
+      .page {
+        grid-template-columns: 1fr;
+      }
+
+      .aside {
+        order: -1;
+      }
+
+      .skill-grid,
+      .certs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .topbar-inner {
+        align-items: stretch;
+        flex-wrap: wrap;
+        padding: 10px 16px;
+      }
+
+      .search {
+        order: 3;
+        max-width: none;
+        flex-basis: 100%;
+      }
+
+      .nav {
+        flex: 1 1 100%;
+        overflow-x: auto;
+        padding-bottom: 2px;
+      }
+
+      .page {
+        margin-top: 14px;
+        padding: 0 12px;
+        gap: 12px;
+      }
+
+      .profile-cover {
+        min-height: 132px;
+      }
+
+      .profile-cover::after {
+        display: none;
+      }
+
+      .profile-body,
+      .section,
+      .side-card {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .avatar-row {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-top: -54px;
+      }
+
+      .avatar {
+        width: 116px;
+        height: 116px;
+        font-size: 32px;
+      }
+
+      .actions {
+        justify-content: flex-start;
+        width: 100%;
+        padding-bottom: 0;
+      }
+
+      .actions .button {
+        flex: 1 1 140px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 42px minmax(0, 1fr);
+      }
+
+      .logo {
+        width: 42px;
+        height: 42px;
+      }
+
+      .project-list,
+      .skill-grid,
+      .certs {
+        grid-template-columns: 1fr;
+      }
+
+      .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .section-note {
+        white-space: normal;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .topbar,
+      .actions,
+      .aside,
+      .footer {
+        display: none;
+      }
+
+      .page {
+        display: block;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .card {
+        box-shadow: none;
+        border-color: #bbb;
+        break-inside: avoid;
+        margin-bottom: 12px;
+      }
+
+      .profile-cover {
+        min-height: 88px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#profile" aria-label="프로필로 이동">
+        <span class="brand-mark">in</span>
+        <span>Resume</span>
+      </a>
+      <div class="search" aria-label="검색창 모양의 프로필 키워드">
+        <span aria-hidden="true">⌕</span>
+        <span>GIST CS · Backend · AI Service · Cloud</span>
+      </div>
+      <nav class="nav" aria-label="이력서 섹션">
+        <a href="#about">소개</a>
+        <a href="#experience">경험</a>
+        <a href="#projects">프로젝트</a>
+        <a href="#skills">기술</a>
+        <a href="#education">학력</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="stack">
+      <article id="profile" class="card">
+        <div class="profile-cover" aria-label="개발 환경을 표현한 커버 이미지"></div>
+        <div class="profile-body">
+          <div class="avatar-row">
+            <div class="avatar" aria-label="이서윤 프로필 아바타">SY</div>
+            <div class="actions">
+              <a class="button primary" href="mailto:seoyun.lee@gm.gist.ac.kr">채용 문의</a>
+              <a class="button" href="#projects">프로젝트 보기</a>
+              <button type="button" onclick="window.print()">PDF 저장</button>
+            </div>
+          </div>
+          <div class="identity">
+            <h1>이서윤</h1>
+            <p class="headline">GIST 컴퓨터공학과 4학년 · 백엔드/AI 서비스 엔지니어 지망 · 데이터로 문제를 정의하고 안정적인 제품으로 마무리하는 개발자</p>
+            <div class="meta">
+              <span>광주, 대한민국</span>
+              <span><strong>구직 중</strong></span>
+              <span>소프트웨어 엔지니어 인턴/신입</span>
+              <span>2027년 2월 졸업 예정</span>
+            </div>
+          </div>
+          <div class="open-to-work">
+            <b>Open to Work</b>
+            <span>Backend Engineer · AI Application Engineer · Cloud Platform Engineer 포지션에 관심이 있습니다.</span>
+          </div>
+        </div>
+      </article>
+
+      <article id="about" class="card section">
+        <div class="section-header">
+          <h2>소개</h2>
+          <span class="section-note">문제 정의에서 배포까지</span>
+        </div>
+        <p class="about">
+          GIST에서 컴퓨터공학을 전공하며 운영체제, 데이터베이스, 컴퓨터 네트워크, 머신러닝을 중심으로 공부했습니다.
+          연구실 인턴과 팀 프로젝트를 통해 Python/FastAPI 기반 API, React 대시보드, Docker 배포, 모델 서빙 파이프라인을 구현했습니다.
+          사용자 로그와 성능 지표를 함께 보며 병목을 찾는 일을 좋아하고, 코드 리뷰와 문서화를 통해 팀이 같은 맥락에서 움직이게 만드는 데 강점이 있습니다.
+        </p>
+      </article>
+
+      <article id="experience" class="card section">
+        <div class="section-header">
+          <h2>경험</h2>
+          <span class="section-note">인턴십 · 연구 · 팀 리딩</span>
+        </div>
+        <div class="timeline">
+          <section class="timeline-item">
+            <div class="logo">AI</div>
+            <div>
+              <h3>AI 서비스 개발 인턴 · Neurix Labs</h3>
+              <div class="item-meta">2025.07 - 2025.12 · 서울 · 하이브리드</div>
+              <ul class="bullets">
+                <li>FastAPI 기반 문서 요약 API를 구현하고 비동기 큐를 적용해 평균 응답 대기 시간을 38% 줄였습니다.</li>
+                <li>RAG 검색 품질 평가 스크립트와 실험 로그 대시보드를 만들어 모델 변경 영향을 팀이 빠르게 확인하도록 했습니다.</li>
+                <li>Docker Compose 개발 환경과 GitHub Actions 테스트 워크플로를 정리해 신규 참여자의 온보딩 시간을 단축했습니다.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="timeline-item">
+            <div class="logo">DB</div>
+            <div>
+              <h3>학부 연구생 · GIST Data Systems Lab</h3>
+              <div class="item-meta">2024.03 - 현재 · 광주과학기술원</div>
+              <ul class="bullets">
+                <li>시계열 센서 데이터 저장 구조를 비교 실험하고 PostgreSQL 파티셔닝과 인덱스 전략을 정리했습니다.</li>
+                <li>실험 자동화 스크립트를 작성해 12개 파라미터 조합의 처리량, 지연 시간, 저장 비용을 반복 측정했습니다.</li>
+                <li>연구 미팅에서 실험 결과를 재현 가능한 노트북과 기술 메모로 공유했습니다.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="timeline-item">
+            <div class="logo">SW</div>
+            <div>
+              <h3>팀 리드 · GIST Software Maestro Prep Study</h3>
+              <div class="item-meta">2023.09 - 2024.06 · 교내 개발 스터디</div>
+              <ul class="bullets">
+                <li>주간 알고리즘 리뷰와 미니 프로젝트 스프린트를 운영하며 8명 팀의 코드 리뷰 기준을 세웠습니다.</li>
+                <li>PR 템플릿, 이슈 라벨, 회고 문서를 도입해 프로젝트 진행 상황을 투명하게 관리했습니다.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </article>
+
+      <article id="projects" class="card section">
+        <div class="section-header">
+          <h2>대표 프로젝트</h2>
+          <span class="section-note">제품화 가능성을 기준으로 선별</span>
+        </div>
+        <div class="project-list">
+          <section class="project">
+            <div class="project-top">
+              <h3>CampusFlow</h3>
+              <span class="status live">운영 데모</span>
+            </div>
+            <p>교내 수업, 셔틀, 식단, 공지 데이터를 모아 개인 일정과 충돌 여부를 보여주는 학생 생활 대시보드입니다.</p>
+            <ul class="bullets">
+              <li>FastAPI 크롤링 워커와 PostgreSQL 스케줄 저장 구조 설계</li>
+              <li>React Query 캐싱으로 모바일 첫 화면 로딩 체감 개선</li>
+            </ul>
+            <div class="chips">
+              <span class="chip">React</span>
+              <span class="chip">FastAPI</span>
+              <span class="chip">PostgreSQL</span>
+              <span class="chip">Docker</span>
+            </div>
+          </section>
+
+          <section class="project">
+            <div class="project-top">
+              <h3>PaperPilot</h3>
+              <span class="status">MVP</span>
+            </div>
+            <p>논문 PDF를 업로드하면 핵심 주장, 실험 설정, 한계점을 카드 형태로 정리해주는 연구 보조 도구입니다.</p>
+            <ul class="bullets">
+              <li>문단 단위 임베딩 검색과 요약 프롬프트 체인을 분리</li>
+              <li>평가 세트 50개로 요약 누락 유형을 추적하고 개선</li>
+            </ul>
+            <div class="chips">
+              <span class="chip">Python</span>
+              <span class="chip">LangChain</span>
+              <span class="chip">Chroma</span>
+              <span class="chip">Next.js</span>
+            </div>
+          </section>
+
+          <section class="project">
+            <div class="project-top">
+              <h3>PacketLab</h3>
+              <span class="status live">수업 프로젝트</span>
+            </div>
+            <p>TCP 혼잡 제어와 라우팅 지연을 시각화하는 네트워크 실험 도구입니다.</p>
+            <ul class="bullets">
+              <li>WebSocket으로 패킷 이벤트를 실시간 스트리밍</li>
+              <li>혼잡 윈도우 변화를 차트로 표시해 실험 해석 시간을 줄임</li>
+            </ul>
+            <div class="chips">
+              <span class="chip">Node.js</span>
+              <span class="chip">Socket.IO</span>
+              <span class="chip">D3.js</span>
+            </div>
+          </section>
+
+          <section class="project">
+            <div class="project-top">
+              <h3>CleanQueue</h3>
+              <span class="status">해커톤</span>
+            </div>
+            <p>대학 기숙사 세탁실의 혼잡도를 예측하고 예약 충돌을 줄이는 경량 웹 서비스입니다.</p>
+            <ul class="bullets">
+              <li>과거 사용 패턴 기반 혼잡도 예측 모델 구현</li>
+              <li>PWA 알림으로 예약 만료와 빈 기기 발생을 안내</li>
+            </ul>
+            <div class="chips">
+              <span class="chip">Vue</span>
+              <span class="chip">Firebase</span>
+              <span class="chip">PWA</span>
+            </div>
+          </section>
+        </div>
+      </article>
+
+      <article id="skills" class="card section">
+        <div class="section-header">
+          <h2>기술</h2>
+          <span class="section-note">업무 투입 기준으로 정리</span>
+        </div>
+        <div class="skill-grid">
+          <section class="skill-box">
+            <h3>Backend</h3>
+            <div class="skill-row"><span>Python / FastAPI</span><div class="bar"><span style="width: 90%"></span></div></div>
+            <div class="skill-row"><span>Node.js</span><div class="bar"><span style="width: 78%"></span></div></div>
+            <div class="skill-row"><span>PostgreSQL</span><div class="bar"><span style="width: 84%"></span></div></div>
+            <div class="skill-row"><span>Redis / Queue</span><div class="bar"><span style="width: 68%"></span></div></div>
+          </section>
+          <section class="skill-box">
+            <h3>Frontend</h3>
+            <div class="skill-row"><span>React</span><div class="bar"><span style="width: 82%"></span></div></div>
+            <div class="skill-row"><span>TypeScript</span><div class="bar"><span style="width: 76%"></span></div></div>
+            <div class="skill-row"><span>Next.js</span><div class="bar"><span style="width: 70%"></span></div></div>
+            <div class="skill-row"><span>Data Viz</span><div class="bar"><span style="width: 72%"></span></div></div>
+          </section>
+          <section class="skill-box">
+            <h3>Infra & Workflow</h3>
+            <div class="skill-row"><span>Docker</span><div class="bar"><span style="width: 82%"></span></div></div>
+            <div class="skill-row"><span>AWS</span><div class="bar"><span style="width: 64%"></span></div></div>
+            <div class="skill-row"><span>GitHub Actions</span><div class="bar"><span style="width: 74%"></span></div></div>
+            <div class="skill-row"><span>Testing</span><div class="bar"><span style="width: 70%"></span></div></div>
+          </section>
+        </div>
+      </article>
+
+      <article id="education" class="card section">
+        <div class="section-header">
+          <h2>학력 및 활동</h2>
+          <span class="section-note">GIST 컴퓨터공학과 4학년</span>
+        </div>
+        <div class="timeline">
+          <section class="timeline-item">
+            <div class="logo">G</div>
+            <div>
+              <h3>광주과학기술원(GIST) · 전기전자컴퓨터공학부 컴퓨터공학 트랙</h3>
+              <div class="item-meta">2021.03 - 2027.02 예정 · GPA 3.82 / 4.30</div>
+              <ul class="bullets">
+                <li>주요 수강: 운영체제, 데이터베이스, 컴퓨터 네트워크, 알고리즘, 소프트웨어공학, 머신러닝</li>
+                <li>GIST 해커톤 우수상, 교내 오픈소스 스터디 운영진, 알고리즘 문제 해결 동아리 활동</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </article>
+
+      <article class="card section">
+        <div class="section-header">
+          <h2>자격 및 언어</h2>
+          <span class="section-note">업무 커뮤니케이션 가능</span>
+        </div>
+        <div class="certs">
+          <div class="cert"><b>정보처리기사</b><span>필기 합격, 실기 준비 중</span></div>
+          <div class="cert"><b>OPIc IH</b><span>영어 기술 미팅 및 문서 작성 가능</span></div>
+          <div class="cert"><b>오픈소스 기여</b><span>문서 개선, 테스트 케이스 추가 중심</span></div>
+        </div>
+      </article>
+    </div>
+
+    <aside class="aside stack" aria-label="사이드 정보">
+      <section class="card side-card profile-mini">
+        <div class="mini-cover" aria-hidden="true"></div>
+        <div>
+          <div class="mini-name">이서윤</div>
+          <p class="item-meta">Backend / AI Service Engineer</p>
+        </div>
+        <div class="metric-grid">
+          <div class="metric"><b>4학년</b><span>GIST CS</span></div>
+          <div class="metric"><b>12+</b><span>팀 프로젝트</span></div>
+          <div class="metric"><b>3회</b><span>해커톤 수상/입상</span></div>
+          <div class="metric"><b>2027.02</b><span>졸업 예정</span></div>
+        </div>
+      </section>
+
+      <section class="card side-card">
+        <h2>연락처</h2>
+        <div class="contact-list">
+          <div class="contact-row">
+            <span class="icon">@</span>
+            <div><b>Email</b><br><a href="mailto:seoyun.lee@gm.gist.ac.kr">seoyun.lee@gm.gist.ac.kr</a></div>
+          </div>
+          <div class="contact-row">
+            <span class="icon">⌂</span>
+            <div><b>Location</b><br>광주 · 서울 근무 가능</div>
+          </div>
+          <div class="contact-row">
+            <span class="icon">#</span>
+            <div><b>GitHub</b><br><a href="https://github.com/seoyun-gist" target="_blank" rel="noreferrer">github.com/seoyun-gist</a></div>
+          </div>
+          <div class="contact-row">
+            <span class="icon">in</span>
+            <div><b>LinkedIn</b><br><a href="https://linkedin.com/in/seoyun-lee-gist" target="_blank" rel="noreferrer">linkedin.com/in/seoyun-lee-gist</a></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card side-card">
+        <h2>핵심 키워드</h2>
+        <div class="chips">
+          <span class="chip">API 설계</span>
+          <span class="chip">데이터 모델링</span>
+          <span class="chip">RAG</span>
+          <span class="chip">성능 개선</span>
+          <span class="chip">문서화</span>
+          <span class="chip">팀 리딩</span>
+        </div>
+      </section>
+
+      <section class="card side-card">
+        <h2>빠른 링크</h2>
+        <div class="quick-list">
+          <a href="#projects"><span>대표 프로젝트</span><b>보기</b></a>
+          <a href="#skills"><span>기술 스택</span><b>보기</b></a>
+          <a href="#education"><span>학력 및 활동</span><b>보기</b></a>
+          <div><span>희망 근무</span><b>인턴/신입</b></div>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    이 페이지는 가상의 GIST 컴퓨터공학과 4학년 취업 준비생 페르소나를 바탕으로 제작되었습니다.
+  </footer>
+</body>
+</html>
